@@ -303,9 +303,7 @@ class ExportToExcel extends Action implements FromQuery, WithCustomChunkSize, Wi
 
         // Add fields that were requested by ->only(), but are not registered as fields in the Nova resource.
         foreach (array_diff($only, array_keys($row)) as $attribute) {
-            if ($model->{$attribute}) {
-                $row[$attribute] = $model->{$attribute};
-            }
+            $row[$attribute] = $model->{$attribute};
         }
 
         return $row;
